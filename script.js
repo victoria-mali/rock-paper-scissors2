@@ -12,29 +12,48 @@ function getComputerChoice() {
     }
 }
 
-
 function getHumanChoice() {
     humanChoice = prompt("Type Rock, Paper or Scissors");
 }
 
 
-/* let computerScore = 0;
-let humanScore = 0; */
 
-function playRound(computerChoice, humanChoice) {
+/* function playRound(computerChoice, humanChoice) {
     if (computerChoice === "Rock" && humanChoice === "Scissors") {
         console.log("You lose! Rock beats Scissors!");
     } else if (computerChoice === "Paper" && humanChoice === "Rock") {
         console.log("You lose! Paper beats Rock!");
     } else if (computerChoice === "Scissors" && humanChoice === "Paper") {
         console.log("You lose! Scissors beat Paper!");
-    } else {
-        console.log("wrong");
+    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+        console.log("You win! Rock beats Scissors!");
+    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+        console.log("You win! Paper beats Rock!");
+    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+        console.log("You win! Scissors beat Paper!");
     }
+} */
+
+function playRound() {
+    let message;
+    if (computerChoice === "Rock" && humanChoice === "Scissors") {
+        message = "You lose! Rock beats Scissors!";
+    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+        message = "You lose! Paper beats Rock!";
+    } else if (computerChoice === "Scissors" && humanChoice === "Paper") {
+        message = "You lose! Scissors beat Paper!";
+    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+        message = "You win! Rock beats Scissors!";
+    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+        message = "You win! Paper beats Rock!";
+    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+        message = "You win! Scissors beat Paper!";
+    }
+    alert(message);
 }
 
-getComputerChoice();
-getHumanChoice();
-playRound();
+
+
+playRound(getComputerChoice(), getHumanChoice());
 console.log(computerChoice);
 console.log(humanChoice);
