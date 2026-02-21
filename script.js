@@ -4,16 +4,16 @@ let humanChoice;
 function getComputerChoice() {
     let computerNumber = Math.floor(Math.random() * 3) + 1;
     if (computerNumber === 1) {
-        computerChoice = "Rock";
+        computerChoice = "rock";
     } else if (computerNumber === 2) {
-        computerChoice = "Paper";
+        computerChoice = "paper";
     } else if (computerNumber === 3) {
-        computerChoice = "Scissors";
+        computerChoice = "scissors";
     }
 }
 
 function getHumanChoice() {
-    humanChoice = prompt("Type Rock, Paper or Scissors");
+    humanChoice = prompt("Type Rock, Paper or Scissors").toLowerCase();
 }
 
 
@@ -34,26 +34,40 @@ function getHumanChoice() {
     }
 } */
 
+let computerScore = 0;
+let humanScore = 0;
+
 function playRound() {
     let message;
-    if (computerChoice === "Rock" && humanChoice === "Scissors") {
+    if (computerChoice === "rock" && humanChoice === "scissors") {
         message = "You lose! Rock beats Scissors!";
-    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+        ++computerScore;
+    } else if (computerChoice === "paper" && humanChoice === "rock") {
         message = "You lose! Paper beats Rock!";
-    } else if (computerChoice === "Scissors" && humanChoice === "Paper") {
+        ++computerScore;
+    } else if (computerChoice === "scissors" && humanChoice === "paper") {
         message = "You lose! Scissors beat Paper!";
-    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
+        ++computerScore;
+    } else if (humanChoice === "rock" && computerChoice === "scissors") {
         message = "You win! Rock beats Scissors!";
-    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+        ++humanScore;
+    } else if (humanChoice === "paper" && computerChoice === "rock") {
         message = "You win! Paper beats Rock!";
-    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+        ++humanScore;
+    } else if (humanChoice === "scissors" && computerChoice === "paper") {
         message = "You win! Scissors beat Paper!";
+        ++humanScore;
+    } else if (computerChoice === humanChoice) {
+        message = "It's a draw!";
     }
-    alert(message);
+
+    let totalScore = "Computer: " + computerScore + " Human: " + humanScore;
+
+    console.log(computerChoice);
+    console.log(humanChoice);
+    console.log(message);
+    console.log(totalScore);
 }
 
 
-
 playRound(getComputerChoice(), getHumanChoice());
-console.log(computerChoice);
-console.log(humanChoice);
