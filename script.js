@@ -1,19 +1,16 @@
-let computerChoice;
-let humanChoice;
-
 function getComputerChoice() {
     let computerNumber = Math.floor(Math.random() * 3) + 1;
     if (computerNumber === 1) {
-        computerChoice = "rock";
+        return "rock";
     } else if (computerNumber === 2) {
-        computerChoice = "paper";
+        return "paper";
     } else if (computerNumber === 3) {
-        computerChoice = "scissors";
+        return "scissors";
     }
 }
 
 function getHumanChoice() {
-    humanChoice = prompt("Type Rock, Paper or Scissors").toLowerCase();
+    return prompt("Type Rock, Paper or Scissors").toLowerCase();
 }
 
 
@@ -22,27 +19,18 @@ let humanScore = 0;
 
 
 function playRound() {
+    const computerChoice = getComputerChoice();
+    const humanChoice = getHumanChoice();
     let message;
-    if (computerChoice === "rock" && humanChoice === "scissors") {
-        message = "You lose! Rock beats Scissors!";
-        ++computerScore;
-    } else if (computerChoice === "paper" && humanChoice === "rock") {
-        message = "You lose! Paper beats Rock!";
-        ++computerScore;
-    } else if (computerChoice === "scissors" && humanChoice === "paper") {
-        message = "You lose! Scissors beat Paper!";
-        ++computerScore;
-    } else if (humanChoice === "rock" && computerChoice === "scissors") {
-        message = "You win! Rock beats Scissors!";
-        ++humanScore;
-    } else if (humanChoice === "paper" && computerChoice === "rock") {
-        message = "You win! Paper beats Rock!";
-        ++humanScore;
-    } else if (humanChoice === "scissors" && computerChoice === "paper") {
-        message = "You win! Scissors beat Paper!";
-        ++humanScore;
-    } else if (computerChoice === humanChoice) {
+
+    if (computerChoice === humanChoice) {
         message = "It's a draw!";
+    } else if ((computerChoice === "rock" && humanChoice === "scissors") || (computerChoice === "paper" && humanChoice === "rock") || (computerChoice === "scissors" && humanChoice === "paper")) {
+        message = `You lose! ${computerChoice} beats ${humanChoice}`;
+        ++computerScore;
+    } else {
+        message = `You win! ${humanChoice} beats ${computerChoice}`;
+        ++humanScore;
     }
 
     let totalScore = "Computer: " + computerScore + " Human: " + humanScore;
@@ -57,11 +45,12 @@ function playRound() {
 /* playRound(getComputerChoice(), getHumanChoice()); */
 
 function playGame() {
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
-    playRound(getComputerChoice(), getHumanChoice());
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    
 }
 
 function calculateResult() {
