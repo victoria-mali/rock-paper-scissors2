@@ -1,3 +1,16 @@
+const text = document.querySelector(".text");
+const results = document.querySelector(".results");
+const score = document.querySelector(".score");
+const startOverBtn = document.querySelector(".start-over");
+const buttons = document.querySelector(".buttons");
+const btnRock = document.querySelector(".btn-rock");
+const btnPaper = document.querySelector(".btn-paper");
+const btnScissors = document.querySelector(".btn-scissors");
+
+let computerScore = 0;
+let humanScore = 0;
+
+
 function getComputerChoice() {
     let computerNumber = Math.floor(Math.random() * 3) + 1;
     if (computerNumber === 1) {
@@ -7,11 +20,7 @@ function getComputerChoice() {
     } else if (computerNumber === 3) {
         return "scissors";
     }
-}
-
-let computerScore = 0;
-let humanScore = 0;
-
+};
 
 function playRound(computerChoice, humanChoice) {
     let message;
@@ -28,10 +37,6 @@ function playRound(computerChoice, humanChoice) {
 
     let totalScore = "Computer: " + computerScore + " Human: " + humanScore;
 
-    const container = document.querySelector(".container");
-    const text = document.querySelector(".container");
-    const results = document.querySelector(".results");
-    const score = document.querySelector(".score");
     results.textContent = message;
     score.textContent = totalScore;
 
@@ -48,28 +53,12 @@ function playRound(computerChoice, humanChoice) {
     score.textContent = `Total score is: ${totalScore}`;
     computerScore = 0;
     humanScore = 0;
-    totalScore = "";
-    buttons.style.display = "none";
-
-    
-    const startOverBtn = document.createElement("button");
-    startOverBtn.textContent = "Restart the game";
-    text.appendChild(startOverBtn);
-
-    startOverBtn.addEventListener("click", () => {
-        results.textContent = "";
-        score.textContent = "";
-        text.removeChild(startOverBtn);
-        buttons.style.display = "block";
-    })
+    buttons.classList.toggle("hidden");
+    startOverBtn.classList.toggle("hidden");
     }
 
-}
+};
 
-const buttons = document.querySelector(".buttons");
-const btnRock = document.querySelector(".btn-rock");
-const btnPaper = document.querySelector(".btn-paper");
-const btnScissors = document.querySelector(".btn-scissors");
 
 btnRock.addEventListener("click", () => {
     playRound(getComputerChoice(), "rock");
@@ -83,18 +72,12 @@ btnScissors.addEventListener("click", () => {
     playRound(getComputerChoice(), "scissors");
 });
 
-
-
- function calculateResult() {
-    if (computerScore > humanScore) {
-        console.log("You lost the game! The computer won.");
-    } else if (computerScore < humanScore) {
-        console.log("You won the game!");
-    } else {
-        console.log("It's a draw!");
-    }
-};
-
+startOverBtn.addEventListener("click", () => {
+    results.textContent = "";
+    score.textContent = "";
+    startOverBtn.classList.toggle("hidden");
+    buttons.classList.toggle("hidden");
+});
 
 
 
