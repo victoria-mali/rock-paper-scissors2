@@ -9,18 +9,11 @@ function getComputerChoice() {
     }
 }
 
-/* function getHumanChoice() {
-    return prompt("Type Rock, Paper or Scissors").toLowerCase();
-} */
-
-
 let computerScore = 0;
 let humanScore = 0;
 
 
 function playRound(computerChoice, humanChoice) {
-   // const computerChoice = getComputerChoice();
-    //const humanChoice = getHumanChoice();
     let message;
 
     if (computerChoice === humanChoice) {
@@ -35,10 +28,29 @@ function playRound(computerChoice, humanChoice) {
 
     let totalScore = "Computer: " + computerScore + " Human: " + humanScore;
 
-    console.log(computerChoice);
+    const results = document.querySelector(".results");
+    const score = document.querySelector(".score");
+    results.textContent = message;
+    score.textContent = totalScore;
+
+
+    if ((computerScore === 5) || (humanScore === 5)) {
+        if (computerScore > humanScore) {
+            results.textContent = "Game over! Computer beat you!" + ` Total score is: ${totalScore}`;
+        } else if (computerScore < humanScore)  {
+            results.textContent = "Game over! You beat computer!" + ` Total score is: ${totalScore}`;
+        } else if (computerScore === humanScore) {
+            results.textContent = "Game over! It's a tie!" + ` Total score is: ${totalScore}`;
+        }
+    score.textContent = "";
+    computerScore = 0;
+    humanScore = 0;
+    }
+
+/*     console.log(computerChoice);
     console.log(humanChoice);
     console.log(message);
-    console.log(totalScore);
+    console.log(totalScore); */
 }
 
 
@@ -59,16 +71,8 @@ btnScissors.addEventListener("click", () => {
 });
 
 
-/* function playGame() {
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    
-} */
 
-/* function calculateResult() {
+ function calculateResult() {
     if (computerScore > humanScore) {
         console.log("You lost the game! The computer won.");
     } else if (computerScore < humanScore) {
@@ -76,7 +80,9 @@ btnScissors.addEventListener("click", () => {
     } else {
         console.log("It's a draw!");
     }
-}
+};
 
-playGame();
-calculateResult(); */
+
+
+
+
