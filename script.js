@@ -9,18 +9,18 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
+/* function getHumanChoice() {
     return prompt("Type Rock, Paper or Scissors").toLowerCase();
-}
+} */
 
 
 let computerScore = 0;
 let humanScore = 0;
 
 
-function playRound() {
-    const computerChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
+function playRound(computerChoice, humanChoice) {
+   // const computerChoice = getComputerChoice();
+    //const humanChoice = getHumanChoice();
     let message;
 
     if (computerChoice === humanChoice) {
@@ -42,18 +42,33 @@ function playRound() {
 }
 
 
-/* playRound(getComputerChoice(), getHumanChoice()); */
+const btnRock = document.querySelector(".btn-rock");
+const btnPaper = document.querySelector(".btn-paper");
+const btnScissors = document.querySelector(".btn-scissors");
 
-function playGame() {
+btnRock.addEventListener("click", () => {
+    playRound(getComputerChoice(), "rock");
+});
+
+btnPaper.addEventListener("click", () => {
+    playRound(getComputerChoice(), "paper");
+});
+
+btnScissors.addEventListener("click", () => {
+    playRound(getComputerChoice(), "scissors");
+});
+
+
+/* function playGame() {
     playRound();
     playRound();
     playRound();
     playRound();
     playRound();
     
-}
+} */
 
-function calculateResult() {
+/* function calculateResult() {
     if (computerScore > humanScore) {
         console.log("You lost the game! The computer won.");
     } else if (computerScore < humanScore) {
@@ -64,4 +79,4 @@ function calculateResult() {
 }
 
 playGame();
-calculateResult();
+calculateResult(); */
